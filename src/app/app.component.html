@@ -2,29 +2,36 @@
 
 <div>
   <label>Enter Length</label>
-  <input type="text" />
+  <input type="text" (input)="onChangeLength($event)" />
 </div>
 
 <div>
   <label>Use Letters</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseLetters()" type="checkbox" />
 </div>
 
 <div>
   <label>Use Numbers</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseNumbers()" type="checkbox" />
 </div>
 
 <div>
   <label>Use Symbols</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseSymbols()" type="checkbox" />
 </div>
 
 <div>
-  <button>Generate</button>
+  <button
+    [disabled]="!(length && (useLetters || useNumbers || useSymbols))"
+    (click)="onButtonClick()"
+  >
+    Generate
+  </button>
 </div>
 
 <div>
   <label>Your Password</label>
-  <input type="text" />
+  <input type="text" [value]="password" />
 </div>
+
+{{ password }}
